@@ -1,6 +1,8 @@
 package com.gllfl.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,4 +35,19 @@ public class ContactInfoController {
 		}
 		return "contactInfo";
 	}
+	
+	@GetMapping("/viewContact")
+	public String viewContactList(Model model) {
+		List<Contact> contactList = contactService.getAllContacts();
+		model.addAttribute("contact", contactList);
+		return "viewContacts";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
