@@ -20,7 +20,7 @@
 		<font color="blue">${success}</font> <font color="red">${error}</font>
 	</h4>
 
-	<form:form action="saveContact" method="POST" modelAttribute="contact">
+	<form:form action="saveContact?contactId=${contact.contactId}" method="POST" modelAttribute="contact">
 
 		<div class="mb-2 row">
 			<label for="cname" class="col-sm-1 col-form-label">Name</label>

@@ -16,7 +16,7 @@
 	<div align="center">
 		
 		<h2>View Contact List</h2>
-		<a href="contact">Add Contact</a><br>
+		<a href="contact"><font size="5px">Add Contact</font></a><br><br>
 		<table class="table">
 			<thead class="table-dark">
 				<tr>
@@ -35,8 +35,8 @@
 						<td>${con.contactEmail}</td>
 						<td>${con.contactNumber}</td>
 						<td>
-							<a href="#">Update</a> &nbsp;
-							<a href="#">Delete</a>
+							<a href="update?id=${con.contactId}">Update</a> &nbsp;
+							<a href="delete/${con.contactId}" onclick="if(!(confirm('Are you sure you want to delete contact record !'))) return false">Delete</a>
 						</td>
 					</tr>
 				</c:forEach>
