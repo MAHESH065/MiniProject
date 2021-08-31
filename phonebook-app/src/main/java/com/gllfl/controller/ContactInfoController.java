@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.gllfl.entity.Contact;
@@ -23,7 +22,7 @@ public class ContactInfoController {
 	public String loadContactForm(Model model) {
 		Contact contactObj = new Contact();
 		model.addAttribute("contact", contactObj);
-		return "contactInfo";
+		return "contactForm-page";
 	}
 	
 	@PostMapping("/saveContact")
@@ -36,14 +35,14 @@ public class ContactInfoController {
 		}else {
 			model.addAttribute("error", "Failed to save Contact Data.. Please Try Again!!");
 		}
-		return "contactInfo";
+		return "contactForm-page";
 	}
 	
 	@GetMapping("/viewContact")
 	public String viewContactList(Model model) {
 		List<Contact> contactList = contactService.getAllContacts();
 		model.addAttribute("contact", contactList);
-		return "viewContacts";
+		return "viewContacts-page";
 	}
 		
 }

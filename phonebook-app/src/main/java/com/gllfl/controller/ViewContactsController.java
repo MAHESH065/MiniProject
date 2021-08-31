@@ -21,18 +21,12 @@ public class ViewContactsController {
 		
 		Contact contactObj = contactService.getContactById(contactId);
 		model.addAttribute("contact", contactObj);
-		return "contactInfo";
+		return "contactForm-page";
 				 
 	}
 	
 	@GetMapping("/delete/{contactId}")
-	public String removeContact(@PathVariable("contactId") Integer ContactId) {
-		
-		/*
-		 * boolean deleteContact= contactService.deleteContactById(ContactId);
-		 * if(deleteContact) { return "redirect:/viewContact"; } return
-		 * "data not found!!!!!";
-		 */
+	public String deleteContact(@PathVariable("contactId") Integer ContactId) {
 		
 		Contact contactObj = contactService.getContactById(ContactId);
 		if(contactObj != null) {
