@@ -36,7 +36,7 @@
 						<td>${con.contactNumber}</td>
 						<td>
 							<a href="update?id=${con.contactId}">Update</a> &nbsp;
-							<a href="delete/${con.contactId}" onclick="if(!(confirm('Are you sure you want to delete contact record !'))) return false">Delete</a>
+							<a href="delete/${con.contactId}" onclick="if(!(confirm('Are you sure? you want to delete contact record !'))) return false">Delete</a>
 						</td>
 					</tr>
 				</c:forEach>
