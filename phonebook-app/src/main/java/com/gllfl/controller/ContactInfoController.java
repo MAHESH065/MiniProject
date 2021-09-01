@@ -20,6 +20,7 @@ public class ContactInfoController {
 	
 	@GetMapping("/contact")
 	public String loadContactForm(Model model) {
+		System.out.println("Load Form execute..");
 		Contact contactObj = new Contact();
 		model.addAttribute("contact", contactObj);
 		return "contactForm-page";
@@ -27,7 +28,7 @@ public class ContactInfoController {
 	
 	@PostMapping("/saveContact")
 	public String insertContact(Contact contact, Model model) {
-		
+		System.out.println("insertContact method execute..");
 		boolean contactObj = contactService.saveContact(contact);
 		
 		if (contactObj ) {
