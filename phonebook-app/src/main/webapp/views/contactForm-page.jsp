@@ -25,21 +25,21 @@
 		<div class="mb-2 row">
 			<label for="cname" class="col-sm-1 col-form-label">Name</label>
 			<div class="col-sm-3">
-				<form:input path="contactName" id="cname" class="form-control" />
+				<form:input path="contactName" id="cname" placeholder="Enter Contact Name" class="form-control"  />
 			</div>
 		</div>
 
 		<div class="mb-2 row">
 			<label for="cemail" class="col-sm-1 col-form-label">Email</label>
 			<div class="col-sm-3">
-				<form:input path="contactEmail" id="cemail" class="form-control" />
+				<form:input path="contactEmail" id="cemail" placeholder="Enter Contact Email" class="form-control" />
 			</div>
 		</div>
 
 		<div class="mb-2 row">
 			<label for="cnumber" class="col-sm-1 col-form-label">Ph.No</label>
 			<div class="col-sm-3">
-				<form:input path="contactNumber" id="cnumber" class="form-control" />
+				<form:input path="contactNumber" id="cnumber" placeholder="Enter Contact Number" class="form-control" />
 			</div>
 		</div>
 
