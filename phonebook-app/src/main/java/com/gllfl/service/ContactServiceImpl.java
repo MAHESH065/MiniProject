@@ -20,26 +20,22 @@ public class ContactServiceImpl implements ContactService {
 	public boolean saveContact(Contact contact) {
 		contact.setActiveSwitch('Y');
 		Contact contactObj = contactRepository.save(contact);
-		if(contactObj != null && contactObj.getContactId() != null) {
-			return true;
-		}
-		return false;
+		return (contactObj != null && contactObj.getContactId() != null);		
 	}
 
 	@Override
 	public List<Contact> getAllContacts() {
 		List<Contact> contactList = contactRepository.findAll();
 		
-		List<Contact> filterContactList = contactList.stream().filter(contact -> contact.getActiveSwitch() == 'Y').collect(Collectors.toList());
-		return filterContactList;
+		return contactList.stream().filter(contact -> contact.getActiveSwitch() == 'Y').collect(Collectors.toList());
+		
 	}
 
 	@Override
 	public Contact getContactById(Integer contactId) {
 		Optional<Contact> contactObjById = contactRepository.findById(contactId);
 		if(contactObjById.isPresent()) {
-			Contact contact = contactObjById.get();
-			return contact;
+			return contactObjById.get();
 		}
 		return null;
 	}

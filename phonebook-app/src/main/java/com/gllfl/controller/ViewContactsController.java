@@ -26,11 +26,11 @@ public class ViewContactsController {
 	}
 	
 	@GetMapping("/delete/{contactId}")
-	public String deleteContact(@PathVariable("contactId") Integer ContactId) {
+	public String deleteContact(@PathVariable(name = "contactId") Integer contactId) {
 		
-		Contact contactObj = contactService.getContactById(ContactId);
+		Contact contactObj = contactService.getContactById(contactId);
 		if(contactObj != null) {
-			contactService.deleteContactById(ContactId);
+			contactService.deleteContactById(contactId);
 			return "redirect:/viewContact";
 		}else {
 			return "No record exist for given id !!!!!";
