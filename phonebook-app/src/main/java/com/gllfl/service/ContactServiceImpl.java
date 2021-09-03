@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gllfl.AppConstant;
 import com.gllfl.entity.Contact;
 import com.gllfl.repository.ContactRepository;
 
@@ -18,7 +19,7 @@ public class ContactServiceImpl implements ContactService {
 
 	@Override
 	public boolean saveContact(Contact contact) {
-		contact.setActiveSwitch('Y');
+		contact.setActiveSwitch(AppConstant.YES);
 		Contact contactObj = contactRepository.save(contact);
 		return (contactObj != null && contactObj.getContactId() != null);		
 	}
@@ -27,7 +28,7 @@ public class ContactServiceImpl implements ContactService {
 	public List<Contact> getAllContacts() {
 		List<Contact> contactList = contactRepository.findAll();
 		
-		return contactList.stream().filter(contact -> contact.getActiveSwitch() == 'Y').collect(Collectors.toList());
+		return contactList.stream().filter(contact -> contact.getActiveSwitch() == AppConstant.YES).collect(Collectors.toList());
 		
 	}
 
@@ -47,7 +48,7 @@ public class ContactServiceImpl implements ContactService {
 		
 		if(optionalObj.isPresent()) {
 			Contact contact = optionalObj.get();
-			contact.setActiveSwitch('N');
+			contact.setActiveSwitch(AppConstant.NO);
 			contactRepository.save(contact);
 			return true;
 		}

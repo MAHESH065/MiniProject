@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.gllfl.AppConstant;
 import com.gllfl.entity.Contact;
 import com.gllfl.service.ContactService;
 
@@ -20,8 +21,8 @@ public class ViewContactsController {
 	public String updateContact(@RequestParam("id") Integer contactId, Model model) {
 		
 		Contact contactObj = contactService.getContactById(contactId);
-		model.addAttribute("contact", contactObj);
-		return "contactForm-page";
+		model.addAttribute(AppConstant.CONTACT, contactObj);
+		return AppConstant.CONTACT_FORM;
 				 
 	}
 	
@@ -33,7 +34,7 @@ public class ViewContactsController {
 			contactService.deleteContactById(contactId);
 			return "redirect:/viewContact";
 		}else {
-			return "No record exist for given id !!!!!";
+			return AppConstant.NO_RECORD;
 		}
 	}
 	

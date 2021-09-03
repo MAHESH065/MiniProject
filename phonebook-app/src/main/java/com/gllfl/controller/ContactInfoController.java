@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.gllfl.AppConstant;
 import com.gllfl.entity.Contact;
 import com.gllfl.props.AppProps;
 import com.gllfl.service.ContactService;
+
 
 @Controller
 public class ContactInfoController {
@@ -26,8 +28,8 @@ public class ContactInfoController {
 	@GetMapping("/contact")
 	public String loadContactForm(Model model) {
 		Contact contactObj = new Contact();
-		model.addAttribute("contact", contactObj);
-		return "contactForm-page";
+		model.addAttribute(AppConstant.CONTACT, contactObj);
+		return AppConstant.CONTACT_FORM;
 	}
 	
 	@PostMapping("/saveContact")
@@ -38,18 +40,18 @@ public class ContactInfoController {
 		Map<String, String> messages = props.getMessages();
 		
 		if (contactObj ) {
-			model.addAttribute("success", messages.get("saveSuccessMessage"));
+			model.addAttribute(AppConstant.SUCCESS, messages.get(AppConstant.SUCCESS_MESSAGE));
 		}else {
-			model.addAttribute("fail", "saveFailMessage");
+			model.addAttribute(AppConstant.Fail, AppConstant.FAIL_MESSAGE);
 		}
-		return "contactForm-page";
+		return AppConstant.CONTACT_FORM;
 	}
 	
 	@GetMapping("/viewContact")
 	public String viewContactList(Model model) {
 		List<Contact> contactList = contactService.getAllContacts();
-		model.addAttribute("contact", contactList);
-		return "viewContacts-page";
+		model.addAttribute(AppConstant.CONTACT, contactList);
+		return AppConstant.VIEW_CONTACTS;
 	}
 		
 }
